@@ -1666,7 +1666,7 @@ def get_progress_distribution(progressList):
 
 @frappe.whitelist(allow_guest=True)
 def get_pwa_manifest():
-	title = frappe.db.get_single_value("Website Settings", "app_name") or "Frappe Learning"
+	title = frappe.db.get_single_value("Website Settings", "app_name") or "Jobson Academy"
 	banner_image = frappe.db.get_single_value("Website Settings", "banner_image")
 
 	manifest = {

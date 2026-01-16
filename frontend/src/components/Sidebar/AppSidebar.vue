@@ -7,7 +7,21 @@
 			class="flex flex-col overflow-hidden"
 			:class="sidebarStore.isSidebarCollapsed ? 'items-center' : ''"
 		>
-			<UserDropdown :isCollapsed="sidebarStore.isSidebarCollapsed" />
+		<!-- Logo Section -->
+		<div class="mx-2 my-4 flex items-center">
+			<img
+				v-if="!sidebarStore.isSidebarCollapsed"
+				src="/logo-jobson.png"
+				alt="Logo"
+				class="sidebar-logo-custom object-contain object-left"
+			/>
+				<img
+					v-else
+					src="/logo-icon.png"
+					alt="Logo"
+					class="h-8 w-8 object-contain"
+				/>
+			</div>
 			<div class="flex flex-col" v-if="sidebarSettings.data">
 				<div v-for="link in sidebarLinks" class="mx-2 my-2.5">
 					<div
@@ -101,6 +115,9 @@
 				:isSidebarCollapsed="sidebarStore.isSidebarCollapsed"
 				appName="learning"
 			/>
+			
+			<!-- User Dropdown moved to bottom - after banners -->
+			<UserDropdown :isCollapsed="sidebarStore.isSidebarCollapsed" />
 
 			<div
 				class="flex items-center mt-4"
@@ -170,7 +187,7 @@
 			v-model="showHelpModal"
 			v-model:articles="articles"
 			appName="learning"
-			title="Frappe Learning"
+			title="Jobson Academy"
 			:logo="LMSLogo"
 			:afterSkip="(step) => capture('onboarding_step_skipped_' + step)"
 			:afterSkipAll="() => capture('onboarding_steps_skipped')"
@@ -603,3 +620,13 @@ onUnmounted(() => {
 	socket.off('publish_lms_notifications')
 })
 </script>
+
+<style scoped>
+.sidebar-logo-custom {
+	height: 69px !important;
+	width: 227px !important;
+	margin-left: 12px !important;
+	margin-right: 12px !important;
+	padding: 0 !important;
+}
+</style>

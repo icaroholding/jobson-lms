@@ -55,7 +55,7 @@ class TestUtils(UnitTestCase):
 
 		course = frappe.new_doc("LMS Course")
 		course.title = "Utility Course"
-		course.short_introduction = "A course to test utilities of Frappe Learning"
+		course.short_introduction = "A course to test utilities of Jobson Academy"
 		course.description = "This is a detailed description of the Utility Course."
 		course.tags = "Frappe,Learning,Utility"
 		course.published = 1

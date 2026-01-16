@@ -1,0 +1,14 @@
+/* Custom Academy icon style with blue background */
+.desktop-icon[data-id="Academy"] .app-icon,
+.desktop-icon[data-id="Frappe LMS"] .app-icon {
+    background-color: #1E40AF !important;
+    padding: 8px !important;
+    border-radius: 8px !important;
+}
+
+.desktop-icon[data-id="Academy"] .icon-container,
+.desktop-icon[data-id="Frappe LMS"] .icon-container {
+    background-color: #1E40AF !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+}

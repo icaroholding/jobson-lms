@@ -1,11 +1,11 @@
 from . import __version__ as app_version
 
 app_name = "frappe_lms"
-app_title = "Frappe LMS"
+app_title = "Academy"
 app_publisher = "Frappe"
-app_description = "Frappe LMS App"
-app_icon_url = "/assets/lms/images/lms-logo.png"
-app_icon_title = "Learning"
+app_description = "Academy App"
+app_icon_url = "/assets/lms/frontend/logo-jobson.png"
+app_icon_title = "Academy"
 app_icon_route = "/lms"
 app_color = "grey"
 app_email = "jannat@frappe.io"
@@ -15,7 +15,7 @@ app_license = "AGPL"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/lms/css/lms.css"
+app_include_css = "/assets/lms/css/desk_custom.css"
 # app_include_js = "/assets/lms/js/lms.js"
 
 # include js, css files in header of web template
@@ -254,8 +254,8 @@ get_site_info = "lms.activation.get_site_info"
 add_to_apps_screen = [
 	{
 		"name": "lms",
-		"logo": "/assets/lms/frontend/learning.svg",
-		"title": "Learning",
+		"logo": "/assets/lms/frontend/logo-jobson.png",
+		"title": "Academy",
 		"route": "/lms",
 		"has_permission": "lms.lms.api.check_app_permission",
 	}
