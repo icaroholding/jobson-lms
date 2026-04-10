@@ -57,7 +57,7 @@ class TestUtils(UnitTestCase):
 		course.title = "Utility Course"
 		course.short_introduction = "A course to test utilities of Jobson Academy"
 		course.description = "This is a detailed description of the Utility Course."
-		course.tags = "Frappe,Learning,Utility"
+		course.tags = "Academy,Learning,Utility"
 		course.published = 1
 		course.append("instructors", {"instructor": "frappe@example.com"})
 		course.save()

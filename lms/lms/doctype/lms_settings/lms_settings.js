@@ -19,11 +19,7 @@ frappe.ui.form.on("LMS Settings", {
 	set_no_payments_app_html(frm) {
 		frm.get_field("payments_app_is_not_installed").html(`
 				<div class="alert alert-warning">
-					Please install the
-					<a target="_blank" style="text-decoration: underline; color: var(--alert-text-warning); background: var(--alert-bg-warning);" href="https://frappecloud.com/marketplace/apps/payments">Payments app</a>
-					 to enable payment gateway. Refer to the
-					 <a target="_blank" style="text-decoration: underline; color: var(--alert-text-warning); background: var(--alert-bg-warning);" href="https://docs.frappe.io/learning/setting-up-payment-gateway">Documentation</a>
-					 for more information.
+					Please install the Payments app to enable payment gateway.
 				</div>
 			`);
 	},

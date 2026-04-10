@@ -228,7 +228,7 @@ const tabsStructure = computed(() => {
 											doctype: 'Livecode URL',
 											type: 'text',
 											description:
-												'https://docs.frappe.io/learning/falcon-self-hosting-guide',
+												'URL of your self-hosted Falcon (LiveCode) instance',
 										},
 									],
 								},

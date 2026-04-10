@@ -80,7 +80,7 @@
  ],
  "fields": [
   {
-   "default": "https://falcon.frappe.io/",
+   "default": "",
    "fieldname": "livecode_url",
    "fieldtype": "Data",
    "label": "LiveCode URL"

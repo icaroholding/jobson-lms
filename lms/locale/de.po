@@ -56,7 +56,7 @@ msgstr ""
 
 #. Paragraph text in the LMS Workspace
 #: lms/lms/workspace/lms/lms.json
-msgid "<a href=\"https://docs.frappe.io/learning\">Documentation</a>"
+msgid "<a href=\"\">Documentation</a>"
 msgstr ""
 
 #: frontend/src/components/Modals/EmailTemplateModal.vue:50

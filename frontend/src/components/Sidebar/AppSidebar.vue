@@ -149,10 +149,10 @@
 							</div>
 						</template>
 					</Tooltip>
-					<Tooltip :text="__('Powered by Learning')">
+					<Tooltip :text="__('Powered by Bouncyloop')">
 						<Zap
 							class="size-4 stroke-1.5 text-ink-gray-7 cursor-pointer"
-							@click="redirectToWebsite()"
+							@click="window.open('https://bouncyloop.com', '_blank')"
 						/>
 					</Tooltip>
 					<Tooltip v-if="showOnboarding" :text="__('Help')">
@@ -193,7 +193,7 @@
 			:afterSkipAll="() => capture('onboarding_steps_skipped')"
 			:afterReset="(step) => capture('onboarding_step_reset_' + step)"
 			:afterResetAll="() => capture('onboarding_steps_reset')"
-			docsLink="https://docs.frappe.io/learning"
+			:docsLink="null"
 		/>
 		<IntermediateStepModal
 			v-model="showIntermediateModal"
@@ -612,9 +612,6 @@ watch(userResource, async () => {
 	setSidebarLinks()
 })
 
-const redirectToWebsite = () => {
-	window.open('https://frappe.io/learning', '_blank')
-}
 
 onUnmounted(() => {
 	socket.off('publish_lms_notifications')

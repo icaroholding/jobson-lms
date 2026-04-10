@@ -56,7 +56,7 @@ msgstr "crwdns149190:0crwdne149190:0"
 
 #. Paragraph text in the LMS Workspace
 #: lms/lms/workspace/lms/lms.json
-msgid "<a href=\"https://docs.frappe.io/learning\">Documentation</a>"
+msgid "<a href=\"\">Documentation</a>"
 msgstr "crwdns149192:0crwdne149192:0"
 
 #: frontend/src/components/Modals/EmailTemplateModal.vue:50

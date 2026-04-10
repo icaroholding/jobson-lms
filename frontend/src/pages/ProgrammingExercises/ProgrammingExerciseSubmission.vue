@@ -171,7 +171,7 @@ const { brand } = sessionStore()
 const { settings } = useSettings()
 const router = useRouter()
 const fromLesson = ref(false)
-const falconURL = ref<string>('https://falcon.frappe.io/')
+const falconURL = ref<string>('')
 const falconError = ref<string | null>(null)
 
 const props = withDefaults(

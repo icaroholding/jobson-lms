@@ -63,11 +63,10 @@ class LMSBatch(Document):
 		if self.paid_batch:
 			installed_apps = frappe.get_installed_apps()
 			if "payments" not in installed_apps:
-				documentation_link = "https://docs.frappe.io/learning/setting-up-payment-gateway"
 				frappe.throw(
 					_(
-						"Please install the Payments App to create a paid batch. Refer to the documentation for more details. {0}"
-					).format(documentation_link)
+						"Please install the Payments App to create a paid batch."
+					)
 				)
 
 	def validate_amount_and_currency(self):

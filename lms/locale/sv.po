@@ -56,8 +56,8 @@ msgstr "<a href=\"/lms/courses/new/edit\">Skapa Kurs</a>"
 
 #. Paragraph text in the LMS Workspace
 #: lms/lms/workspace/lms/lms.json
-msgid "<a href=\"https://docs.frappe.io/learning\">Documentation</a>"
-msgstr "<a href=\"https://docs.frappe.io/learning\">Dokumentation</a>"
+msgid "<a href=\"\">Documentation</a>"
+msgstr "<a href=\"\">Dokumentation</a>"
 
 #: frontend/src/components/Modals/EmailTemplateModal.vue:50
 msgid "<p>Dear {{ member_name }},</p>\\n\\n<p>You have been enrolled in our upcoming batch {{ batch_name }}.</p>\\n\\n<p>Thanks,</p>\\n<p>Frappe Learning</p>"

@@ -2,13 +2,13 @@ from . import __version__ as app_version
 
 app_name = "frappe_lms"
 app_title = "Academy"
-app_publisher = "Frappe"
+app_publisher = "Bouncyloop"
 app_description = "Academy App"
 app_icon_url = "/assets/lms/frontend/logo-jobson.png"
 app_icon_title = "Academy"
 app_icon_route = "/lms"
 app_color = "grey"
-app_email = "jannat@frappe.io"
+app_email = "dev@bouncyloop.com"
 app_license = "AGPL"
 
 # Includes in <head>

@@ -38,7 +38,7 @@ describe("Course Creation", () => {
 		cy.get("label")
 			.contains("Preview Video")
 			.type("https://www.youtube.com/embed/-LPmw2Znl2c");
-		cy.get("[id=tags]").type("Learning{enter}Frappe{enter}ERPNext{enter}");
+		cy.get("[id=tags]").type("Learning{enter}Academy{enter}ERPNext{enter}");
 		cy.get("label")
 			.contains("Category")
 			.parent()
@@ -118,7 +118,7 @@ describe("Course Creation", () => {
 		cy.get("div").contains("Test Course");
 		cy.get("div").contains("Test Course Short Introduction to test the UI");
 		cy.get("div").contains("Learning");
-		cy.get("div").contains("Frappe");
+		cy.get("div").contains("Academy");
 		cy.get("div").contains("ERPNext");
 		cy.get("iframe").should(
 			"have.attr",
