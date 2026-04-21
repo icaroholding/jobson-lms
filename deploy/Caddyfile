@@ -1,0 +1,28 @@
+{$DOMAIN} {
+	tls {$LETSENCRYPT_EMAIL}
+
+	encode gzip zstd
+
+	# Websocket socket.io → porta 9000 del container frappe
+	handle /socket.io/* {
+		reverse_proxy frappe:9000
+	}
+
+	# Tutto il resto → porta 8000 del container frappe (web/gunicorn)
+	handle {
+		reverse_proxy frappe:8000 {
+			transport http {
+				read_timeout 300s
+				write_timeout 300s
+			}
+		}
+	}
+
+	# Log degli accessi (volume caddy-data)
+	log {
+		output file /data/access.log {
+			roll_size 50mb
+			roll_keep 5
+		}
+	}
+}

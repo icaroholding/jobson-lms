@@ -1,0 +1,72 @@
+name: jobson-academy
+
+services:
+  mariadb:
+    image: mariadb:10.11
+    restart: unless-stopped
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+      - --skip-innodb-read-only-compressed
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+  frappe:
+    image: frappe/bench:latest
+    restart: unless-stopped
+    working_dir: /home/frappe
+    command: bash /deploy/init-prod.sh
+    environment:
+      SHELL: /bin/bash
+      SITE_NAME: ${SITE_NAME}
+      DOMAIN: ${DOMAIN}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      LMS_REPO: ${LMS_REPO:-https://github.com/icaroholding/jobson-lms}
+      LMS_BRANCH: ${LMS_BRANCH:-develop}
+    volumes:
+      - frappe-bench:/home/frappe
+      - ./init-prod.sh:/deploy/init-prod.sh:ro
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - frappe
+
+volumes:
+  mariadb-data:
+  redis-data:
+  frappe-bench:
+  caddy-data:
+  caddy-config:
