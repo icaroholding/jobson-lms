@@ -78,6 +78,7 @@ import LMSLogo from '@/components/Icons/LMSLogo.vue'
 import SettingsModal from '@/components/Settings/Settings.vue'
 import {
 	ChevronDown,
+	Code2,
 	LogIn,
 	LogOut,
 	Moon,
@@ -178,6 +179,16 @@ const userDropdownOptions = computed(() => {
 					],
 					condition: () => {
 						return userResource.data?.is_moderator
+					},
+				},
+				{
+					icon: Code2,
+					label: 'Source Code',
+					onClick: () => {
+						window.open(
+							'https://github.com/icaroholding/jobson-lms',
+							'_blank'
+						)
 					},
 				},
 				{
