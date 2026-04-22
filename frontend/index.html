@@ -233,32 +233,39 @@
 		<script src="https://files.bpcontent.cloud/2025/11/17/23/20251117230919-434T858E.js" defer></script>
 
 		<!-- Lift the Botpress launcher above the bottom navbar on mobile, only while the webchat is closed -->
-		<style>
-			@media (max-width: 768px) {
-				.bpFabContainer.jobsonLiftedFab {
-					transform: translateY(-40px) !important;
-				}
-			}
-		</style>
 		<script>
 			(function () {
 				var mq = window.matchMedia('(max-width: 768px)')
+				var ORIGINAL_BOTTOM = null
 
 				function apply() {
 					var container = document.querySelector('.bpFabContainer')
 					if (!container) return
 					var isClosed = !!container.querySelector('.bpFabIcon')
+
+					if (ORIGINAL_BOTTOM === null) {
+						ORIGINAL_BOTTOM =
+							window.getComputedStyle(container).bottom || '20px'
+					}
+
 					if (mq.matches && isClosed) {
-						container.classList.add('jobsonLiftedFab')
+						// Lift the FAB 40px above the mobile bottom navbar
+						container.style.setProperty('bottom', '60px', 'important')
+						console.log('[JobsonFAB] lifted → bottom:60px')
 					} else {
-						container.classList.remove('jobsonLiftedFab')
+						container.style.removeProperty('bottom')
+						console.log('[JobsonFAB] reset → ' + ORIGINAL_BOTTOM)
 					}
 				}
 
 				var observer = new MutationObserver(apply)
 				observer.observe(document.body, { childList: true, subtree: true })
 				mq.addEventListener && mq.addEventListener('change', apply)
+				// Re-apply a few times in case Botpress overwrites the style
 				apply()
+				setTimeout(apply, 500)
+				setTimeout(apply, 1500)
+				setTimeout(apply, 3000)
 			})()
 		</script>
 	</body>
