@@ -232,13 +232,34 @@
 		<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
 		<script src="https://files.bpcontent.cloud/2025/11/17/23/20251117230919-434T858E.js" defer></script>
 
-		<!-- Lift the Botpress launcher above the bottom navbar on mobile, but only when the webchat is closed -->
+		<!-- Lift the Botpress launcher above the bottom navbar on mobile, only while the webchat is closed -->
 		<style>
 			@media (max-width: 768px) {
-				.bpFabContainer:has(.bpFabIcon) {
+				.bpFabContainer.jobsonLiftedFab {
 					transform: translateY(-40px) !important;
 				}
 			}
 		</style>
+		<script>
+			(function () {
+				var mq = window.matchMedia('(max-width: 768px)')
+
+				function apply() {
+					var container = document.querySelector('.bpFabContainer')
+					if (!container) return
+					var isClosed = !!container.querySelector('.bpFabIcon')
+					if (mq.matches && isClosed) {
+						container.classList.add('jobsonLiftedFab')
+					} else {
+						container.classList.remove('jobsonLiftedFab')
+					}
+				}
+
+				var observer = new MutationObserver(apply)
+				observer.observe(document.body, { childList: true, subtree: true })
+				mq.addEventListener && mq.addEventListener('change', apply)
+				apply()
+			})()
+		</script>
 	</body>
 </html>
