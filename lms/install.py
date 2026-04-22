@@ -1,3 +1,6 @@
+import shutil
+from pathlib import Path
+
 import frappe
 from frappe.desk.page.setup_wizard.setup_wizard import add_all_roles_to
 
@@ -13,6 +16,36 @@ def after_sync():
 	create_lms_roles()
 	set_default_certificate_print_format()
 	give_lms_roles_to_admin()
+	override_frappe_logos()
+
+
+def override_frappe_logos():
+	"""Overwrite Frappe framework logo assets with the Jobson Academy logo.
+
+	Runs on install and on every migrate so a `bench update` that restores
+	the framework assets gets re-branded automatically.
+	"""
+	bench_path = Path(frappe.utils.get_bench_path())
+	jobson_logo = bench_path / "sites/assets/lms/frontend/logo-jobson.png"
+	frappe_images = bench_path / "sites/assets/frappe/images"
+
+	if not jobson_logo.exists() or not frappe_images.is_dir():
+		return
+
+	for name in ("frappe-logo.png", "frappe-framework-logo.png"):
+		target = frappe_images / name
+		if target.exists():
+			shutil.copy2(jobson_logo, target)
+
+	svg_wrapper = (
+		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">'
+		'<image href="/assets/lms/frontend/logo-jobson.png" width="500" height="500"/>'
+		"</svg>"
+	)
+	for name in ("frappe-framework-logo.svg", "frappe-favicon.svg"):
+		target = frappe_images / name
+		if target.exists():
+			target.write_text(svg_wrapper)
 
 
 def before_uninstall():
