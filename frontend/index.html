@@ -235,14 +235,10 @@
 		<!-- Lift the Botpress launcher above the bottom navbar on mobile -->
 		<style>
 			@media (max-width: 768px) {
-				.bpFab,
-				[class*="bpFab"],
-				[class^="bp-fab"],
-				[data-bp-fab],
-				#webchat-container,
-				#bp-web-widget-container,
-				iframe[title*="Botpress" i],
-				iframe[title*="webchat" i] {
+				#fab-root,
+				#fab-root.bpFab,
+				div[data-name="fab"].bpFab,
+				.bpFab {
 					bottom: 80px !important;
 				}
 			}
