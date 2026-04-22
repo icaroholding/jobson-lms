@@ -235,8 +235,9 @@
 		<!-- Lift the Botpress launcher above the bottom navbar on mobile -->
 		<style>
 			@media (max-width: 768px) {
-				.bpFab {
-					margin-bottom: 40px !important;
+				.bpFab,
+				#fab-root {
+					transform: translateY(-40px) !important;
 				}
 			}
 		</style>
