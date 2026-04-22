@@ -12,3 +12,26 @@
     border-radius: 8px !important;
     padding: 8px !important;
 }
+
+/* Override Frappe logo in splash/loading screens with Jobson logo */
+img[src*="frappe-favicon"],
+img[src*="frappe_logo"],
+img[src$="frappe/images/frappe-framework-logo.svg"],
+img[src$="frappe/images/default-avatar.png"].splash-logo,
+.splash img,
+.app-icon img[src*="frappe"],
+.navbar-brand img[src*="frappe"],
+.bootstrap-loader img {
+    content: url("/assets/lms/frontend/logo-jobson.png") !important;
+    max-height: 80px !important;
+    width: auto !important;
+}
+
+/* Hide "Made with Frappe" / "Powered by Frappe" footers */
+.powered-by-frappe,
+.footer-powered,
+.made-with-frappe,
+a[href*="frappe.io"],
+a[href*="frappeframework.com"] {
+    display: none !important;
+}
