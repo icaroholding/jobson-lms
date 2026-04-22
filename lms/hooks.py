@@ -8,6 +8,8 @@ app_icon_url = "/assets/lms/frontend/logo-jobson.png"
 app_icon_title = "Academy"
 app_icon_route = "/lms"
 app_color = "grey"
+app_logo_url = "/assets/lms/frontend/logo-jobson.png"
+app_logo = "/assets/lms/frontend/logo-jobson.png"
 app_email = "dev@bouncyloop.com"
 app_license = "AGPL"
 
