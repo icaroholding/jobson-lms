@@ -231,5 +231,21 @@
 		<!-- Botpress Chat Scripts -->
 		<script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
 		<script src="https://files.bpcontent.cloud/2025/11/17/23/20251117230919-434T858E.js" defer></script>
+
+		<!-- Lift the Botpress launcher above the bottom navbar on mobile -->
+		<style>
+			@media (max-width: 768px) {
+				.bpFab,
+				[class*="bpFab"],
+				[class^="bp-fab"],
+				[data-bp-fab],
+				#webchat-container,
+				#bp-web-widget-container,
+				iframe[title*="Botpress" i],
+				iframe[title*="webchat" i] {
+					bottom: 80px !important;
+				}
+			}
+		</style>
 	</body>
 </html>
