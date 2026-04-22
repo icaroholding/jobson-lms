@@ -8,6 +8,7 @@ import { createDialog } from '@/utils/dialogs'
 import translationPlugin from './translation'
 import { usersStore } from './stores/user'
 import { initSocket } from './socket'
+import { initBotpressLift } from './utils/botpressLift'
 import { FrappeUI, setConfig, frappeRequest, pageMetaPlugin } from 'frappe-ui'
 import { telemetryPlugin } from 'frappe-ui/frappe'
 
@@ -31,3 +32,5 @@ app.provide('$allUsers', allUsers)
 
 app.config.globalProperties.$user = userResource
 app.config.globalProperties.$dialog = createDialog
+
+initBotpressLift()
